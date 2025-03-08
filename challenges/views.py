@@ -21,16 +21,19 @@ monthly_challenges = {
 
 
 def index(request):
-    list_items = ""
+    # list_items = ""
     months = list(monthly_challenges.keys())
+    return render(request, "catography/index.html", {
+        "months": months
+    })
 
-    for month in months:
-        capitalized_month = month.capitalize()
-        month_path = reverse("month-challenge", args=[month])
-        # reverse allows to build url dynamically instead of hard code
-        list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    # for month in months:
+    #     capitalized_month = month.capitalize()
+    #     month_path = reverse("month-challenge", args=[month])
+    #     # reverse allows to build url dynamically instead of hard code
+    #     list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+    # response_data = f"<ul>{list_items}</ul>"
+    # return HttpResponse(response_data)
 
 # request and any dynamic segment aka month
 
